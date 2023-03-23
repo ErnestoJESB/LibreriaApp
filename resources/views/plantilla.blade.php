@@ -93,6 +93,10 @@
 <script src="http://localhost/LibreriaApp/public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="http://localhost/LibreriaApp/public/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
+<script src="http://localhost/LibreriaApp/public/plugins/inputmask/jquery.inputmask.js"></script>
+<script src="http://localhost/LibreriaApp/public/plugins/inputmask/jquery.inputmask.date.extensions.js"></script>
+<script src="http://localhost/LibreriaApp/public/plugins/inputmask/jquery.inputmask.extensions.js"></script>
+
 <!-- SweetAlert2 scripts -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -136,7 +140,29 @@
         window.location = "Eliminar-Usuario/"+Uid;
       }
     })
-  })
+  });
+
+  $('.table').on('click','.EliminarCliente',function(){
+    var Uid = $(this).attr('Uid');
+    var Cliente = $(this).attr('Cliente');
+
+    Swal.fire({
+
+      title: '¿Seguro que desea eliminar el Cliente: '+Cliente+'?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#3085d6',
+    }).then((result)=>{
+      if(result.isConfirmed){
+        window.location = "{{url('Eliminar-Cliente/')}}/"+Cid;
+      }
+    })
+  });
+
+  $('data-mask').inputmask();
 </script>
 
 @if(session('UsuarioCreado')=='OK')
@@ -147,7 +173,23 @@
       'success'
     );
   </script>
-@endif
+@elseif(session('ClienteCreado')=='OK')
+  <script type="text/javascript">
+    Swal.fire(
+      'El Cliente ha sido creado',
+      '',
+      'success'
+    );
+  </script>
+@elseif(session('ClienteActualizado')=='OK')
+  <script type="text/javascript">
+    Swal.fire(
+      'El Cliente ha sido actualizado',
+      '',
+      'success'
+    );
+  </script>
+  @endif
 
 <?php
   $exp = explode('/', $_SERVER["REQUEST_URI"]);
@@ -161,7 +203,13 @@
     $('#EditarUsuario').modal('toggle');
   });
 </script>
-@endif
+@elseif($exp[3]=='Editar-Cliente')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#EditarCliente').modal('toggle');
+  }); 
+</script>
+@endif  
 
 </body>
 </html>

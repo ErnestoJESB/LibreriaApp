@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\InicioController;
+use APp\Http\Controllers\UsuariosController;
+use App\Http\Controllers\ClientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,8 @@ Route::post('/Usuarios', [App\Http\Controllers\UsuariosController::class, 'store
 Route::get('Eliminar-Usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'destroy']);
 Route::get('Editar-Usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'edit']);
 Route::get('actualizar-Usuario/{id}', [App\Http\Controllers\UsuariosController::class,'update']);
+Route::get('/Clientes', [ClientesController::class, 'index']);
+Route::post('/Clientes', [ClientesController::class, 'store']);
+Route::get('Editar-Cliente/{id}', [ClientesController::class, 'edit']);
+Route::put('actualizar-Cliente/{id}', [ClientesController::class,'update']);
+Route::get('Eliminar-Cliente/{id}', [ClientesController::class, 'destroy']);
