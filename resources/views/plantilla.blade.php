@@ -143,7 +143,7 @@
   });
 
   $('.table').on('click','.EliminarCliente',function(){
-    var Uid = $(this).attr('Uid');
+    var Cid = $(this).attr('Cid');
     var Cliente = $(this).attr('Cliente');
 
     Swal.fire({
@@ -157,6 +157,7 @@
       confirmButtonColor: '#3085d6',
     }).then((result)=>{
       if(result.isConfirmed){
+    
         window.location = "{{url('Eliminar-Cliente/')}}/"+Cid;
       }
     })
