@@ -1,3 +1,5 @@
+  <link rel="stylesheet" href="http://localhost/LibreriaAppM/resources/css/styles.css">
+  
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -14,7 +16,7 @@
       <li class="dropdown user user-menu">
         <a href="#" class="nav-link" data-toggle="dropdown">
           @if (auth()->user()->foto == "")
-            <img src="{{ url('storage/defecto.png')}}" class="user-image" alt="User Image">
+            <img src="http://localhost/LibreriaAppM/public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
           @else
           <img src="{{ url('storage/'.auth()->user()->foto) }}" class="user-image" alt="User Image">
           @endif
@@ -23,7 +25,7 @@
             <!-- User image -->
             <li class="user-header ">
               @if (auth()->user()->foto == "")
-                <img src="{{ url('storage/defecto.png') }}" class="user-image" alt="User Image">
+                <img src="http://localhost/LibreriaAppM/public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               @else
               <img src="{{ url('storage/'.auth()->user()->foto) }}" class="img-circle" alt="User Image">
               @endif  
